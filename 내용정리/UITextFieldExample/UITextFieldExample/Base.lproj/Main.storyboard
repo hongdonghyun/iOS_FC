@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UITextFieldExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="abc@gmail.com" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wfr-HF-7gO">
+                                <rect key="frame" x="134" y="90" width="260" height="34"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                <connections>
+                                    <action selector="EditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="01k-GZ-LjA"/>
+                                    <action selector="EditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="WWh-ft-4PA"/>
+                                    <action selector="EditingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="NLk-ik-w75"/>
+                                    <action selector="textFieldDidEndOnExit:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="ZkB-XW-mbb"/>
+                                    <action selector="textFieldPrimaryActionTriggered:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="czl-YA-P3I"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nh5-YO-E32">
+                                <rect key="frame" x="134" y="149" width="260" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="EditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="qbr-uu-IGQ"/>
+                                    <action selector="EditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="a39-EN-uvp"/>
+                                    <action selector="EditingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="dTo-1m-TmC"/>
+                                    <action selector="textFieldDidEndOnExit:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="k4G-eT-kwM"/>
+                                    <action selector="textFieldPrimaryActionTriggered:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="MIi-gE-cbD"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcI-TI-mBK">
+                                <rect key="frame" x="20" y="90" width="30" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNu-ug-7Pv">
+                                <rect key="frame" x="138" y="265" width="101" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASSWORD : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7o-Qp-8xr">
+                                <rect key="frame" x="20" y="154" width="106" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Wfr-HF-7gO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="46" id="0Tn-JI-D8o"/>
+                            <constraint firstItem="oNu-ug-7Pv" firstAttribute="top" secondItem="nh5-YO-E32" secondAttribute="bottom" constant="82" id="9ic-pN-3Js"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oNu-ug-7Pv" secondAttribute="bottom" constant="567" id="APR-QZ-HQ4"/>
+                            <constraint firstItem="nh5-YO-E32" firstAttribute="top" secondItem="Wfr-HF-7gO" secondAttribute="bottom" constant="25" id="Fe9-BK-3mr"/>
+                            <constraint firstItem="nh5-YO-E32" firstAttribute="leading" secondItem="C7o-Qp-8xr" secondAttribute="trailing" constant="8" symbolic="YES" id="Fyd-CB-dhm"/>
+                            <constraint firstItem="C7o-Qp-8xr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="FzK-8v-JQu"/>
+                            <constraint firstItem="dcI-TI-mBK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HaB-E5-Mxr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="C7o-Qp-8xr" secondAttribute="bottom" constant="687.5" id="J6u-Jc-UiL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oNu-ug-7Pv" secondAttribute="trailing" constant="175" id="NVn-wW-IUD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nh5-YO-E32" secondAttribute="trailing" constant="20" id="NgR-gB-N04"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Wfr-HF-7gO" secondAttribute="trailing" constant="20" id="Xix-d7-flE"/>
+                            <constraint firstItem="oNu-ug-7Pv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="138" id="rCp-Br-PYx"/>
+                            <constraint firstItem="dcI-TI-mBK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="46" id="sSD-ay-73a"/>
+                            <constraint firstItem="C7o-Qp-8xr" firstAttribute="top" secondItem="dcI-TI-mBK" secondAttribute="bottom" constant="43.5" id="tAR-jy-Wwe"/>
+                            <constraint firstItem="Wfr-HF-7gO" firstAttribute="leading" secondItem="dcI-TI-mBK" secondAttribute="trailing" constant="84" id="vjG-w7-MmI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="idTextField" destination="Wfr-HF-7gO" id="kOY-Rh-JLi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="96.428571428571431"/>
+        </scene>
+    </scenes>
+</document>
