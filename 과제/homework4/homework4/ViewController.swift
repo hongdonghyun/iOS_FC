@@ -32,20 +32,23 @@ class ViewController: UIViewController {
         textField.addTarget(self, action: #selector(EditingDidEnd(_:)), for: .editingDidEnd)
         textField.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
         
-
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        view.addGestureRecognizer(tap)
         view.addSubview(someButton)
+    }
+    
+    @objc func handleTap(_ sender: Any) {
+        view.endEditing(true)
     }
     
     @objc func EditingDidBegin(_ sender: UITextField) {
         textLabel.font = .systemFont(ofSize: 40)
         textLabel.textColor = .blue
-        
     }
     
     @objc func EditingDidEnd(_ sender: UITextField) {
         textLabel.font = .systemFont(ofSize: 20)
         textLabel.textColor = .red
-        print("focus")
         
     }
     @objc func editingChanged(_ sender: UITextField) {
@@ -53,12 +56,9 @@ class ViewController: UIViewController {
     }
     
     func setUpLabel() {
-        print(maxWidth)
-        print(maxHeight)
         textLabel.frame.size = CGSize(width: view.frame.size.width, height: 100)
         textLabel.textAlignment = .center
         textLabel.center.y = 100
-        textLabel.text = "0"
         view.addSubview(textLabel)
         
     }
@@ -69,8 +69,7 @@ class ViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.clearButtonMode = .whileEditing
         textField.font = UIFont.systemFont(ofSize: 20)
-        textField.placeholder = "Test"
-//        textField.becomeFirstResponder()
+        textField.placeholder = "아무거나 입력하세요."
         textField.tag = 0
         view.addSubview(textField)
     }
