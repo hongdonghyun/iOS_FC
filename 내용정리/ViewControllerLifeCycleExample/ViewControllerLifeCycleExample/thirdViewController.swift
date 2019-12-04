@@ -40,11 +40,11 @@ class ThirdViewController: UIViewController {
     }
     
     @objc private func didTapAButton(_ sender: UIButton) {
-        print("click a button")
+        guard let _ = presentingViewController?.presentingViewController?.dismiss(animated: true) else { return }
     }
     
     @objc private func didTapBButton(_ sender: UIButton) {
-        print("click b button")
+        guard let _ = presentingViewController?.dismiss(animated: true) else { return }
     }
     
     // viewWillAppear (뷰가 나타날것) -> 다른뷰를 왔다 갔다할때 호출

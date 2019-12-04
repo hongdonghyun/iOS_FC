@@ -10,8 +10,8 @@ let width = 10
 
 
 let h = Int8(12)
-//let x = 10 * h
-//print(x)
+let x = 10 * h
+print(x)
 
 /*:
  ---

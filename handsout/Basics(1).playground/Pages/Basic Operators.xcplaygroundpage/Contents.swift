@@ -80,6 +80,7 @@ value %= 2
 var (x, y) = (1, 2)
 print(x, y)
 
+
 /*:
  ---
  ## Arithmetic Operators
@@ -206,10 +207,10 @@ false || false
 
 
 // Combining Logical Operators
-let enteredDoorCode = true
+let enteredDoorCode = false
 let passedRetinaScan = false
-let hasDoorKey = false
-let knowsOverridePassword = true
+let hasDoorKey = true
+let knowsOverridePassword = false
 
 
 // 여기서 문을 열기 위한 조건은?
@@ -232,22 +233,42 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
  - 논리 연산자는 순서에 주의 필요. 순서를 신경 써야 하는 이유는?
  */
 
-func returnTrue() -> Bool {
-  print("function called")
-  return true
+func returnTrue1() -> Bool {
+    print("returnTrue1")
+    print("function called")
+    return true
+}
+
+func returnTrue2() -> Bool {
+    print("returnTrue2")
+    print("function called")
+    return true
+}
+
+func returnTrue3() -> Bool {
+    print("returnTrue3")
+    print("function called")
+    return true
+}
+
+func returnTrue4() -> Bool {
+    print("returnTrue4")
+    print("function called")
+    return true
 }
 
 // 아래 3개의 케이스에서 returnTrue 메서드는 각각 몇 번씩 호출될까?
 // 우선순위 : && > ||
 
 print("\n---------- [ Case 1 ] ----------\n")
-returnTrue() && returnTrue() && false || true && returnTrue()
+returnTrue1() && returnTrue2() && false || true && returnTrue3()
+
 
 print("\n---------- [ Case 2 ] ----------\n")
-returnTrue() && false && returnTrue() || returnTrue()
+returnTrue1() && false && returnTrue2() || returnTrue3()
 
 print("\n---------- [ Case 3 ] ----------\n")
-returnTrue() || returnTrue() && returnTrue() || false && returnTrue()
+returnTrue1() || returnTrue2() && returnTrue3() || false && returnTrue4()
 
 
 /*:

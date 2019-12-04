@@ -236,10 +236,11 @@ default:
 // value binding
 
 // x, y 좌표
-let somePoint = (9, 0)
-
+let somePoint = (0, 9)
+print(somePoint)
 switch somePoint {
 case (let distance, 0), (0, let distance):
+    print(distance)
   print("On an axis, \(distance) from the origin")
 default:
   print("Not on an axis")
@@ -265,7 +266,15 @@ case let (x, y):
  ---
  */
 // 하단 Answer 참고
-
+var rrr = 10
+switch rrr {
+case let a where a % 2 == 0:
+    print("짝")
+case let a where a % 2 == 0:
+    print("홀")
+default:
+    print("Error")
+}
 
 
 
@@ -308,10 +317,14 @@ print(description)
  */
 
 func update(age: Int) {
+    // 범위에 포함되는가
   if 1...100 ~= age {
     print("Update")
   }
 }
+
+update(age: 100)
+
 
 //func update(age: Int) {
 //  switch age {

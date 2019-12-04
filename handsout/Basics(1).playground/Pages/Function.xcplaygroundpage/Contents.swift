@@ -227,6 +227,7 @@ functionWithDefault(paramWithoutDefault: 4)
 */
 
 func arithmeticAverage(_ numbers: Double...) -> Double {
+  print(numbers)
   var total = 0.0
   for number in numbers {
     total += number

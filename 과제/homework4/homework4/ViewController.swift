@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         textField.addTarget(self, action: #selector(EditingDidBegin(_:)), for: .editingDidBegin)
         textField.addTarget(self, action: #selector(EditingDidEnd(_:)), for: .editingDidEnd)
         textField.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
+        textField.addTarget(self, action: #selector(editingDidEndOnExit(_:)), for: .editingDidEndOnExit)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         view.addGestureRecognizer(tap)
@@ -40,6 +41,8 @@ class ViewController: UIViewController {
     @objc func handleTap(_ sender: Any) {
         view.endEditing(true)
     }
+    
+    @objc func editingDidEndOnExit(_ sender: UITextField) {}
     
     @objc func EditingDidBegin(_ sender: UITextField) {
         textLabel.font = .systemFont(ofSize: 40)
@@ -51,6 +54,7 @@ class ViewController: UIViewController {
         textLabel.textColor = .red
         
     }
+    
     @objc func editingChanged(_ sender: UITextField) {
         textLabel.text = sender.text ?? ""
     }
@@ -70,7 +74,6 @@ class ViewController: UIViewController {
         textField.clearButtonMode = .whileEditing
         textField.font = UIFont.systemFont(ofSize: 20)
         textField.placeholder = "아무거나 입력하세요."
-        textField.tag = 0
         view.addSubview(textField)
     }
 

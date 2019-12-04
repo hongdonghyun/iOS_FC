@@ -163,3 +163,94 @@ e.g. 18의 자릿수 합은 1 + 8 = 9 이고, 18은 9로 나누어 떨어지므�
 //    return result / input == 0 ? true : false
 //}
 
+
+import Foundation
+
+//func solution(_ n:Int) -> [[Int]] {
+//    var hanoiArray: [[Int]] = []
+//
+//    func hanoi(_ n: Int, _ from: Int, _ by: Int, _ to: Int, recursive: Int) -> [[Int]] {
+//        if n == 1 {
+//            print("\(recursive)번째 재귀 -> 원반을 \(from)번 기둥에서 \(to)번 기둥으로 옮김")
+//            hanoiArray.append([from,to])
+//        } else {
+//            print("\(recursive)번째 재귀 n: \(n)")
+//            // n-1번째 까지의 원반을 by로 옮기는 중
+//            hanoi(n-1, from,to,by, recursive: 1)
+//            // n번째 원반을 to로 옮긴다.
+//            //        print("")
+//            hanoi(1, from,by,to, recursive: 2)
+//            hanoi(n-1, by,from,to, recursive: 3)
+//
+//        }
+//        return hanoiArray
+//    }
+//    return hanoi(n,1,2,3,recursive: 0)
+//}
+//solution(3)
+
+//func oddEven (_ input: Int) -> String {
+//    var returnString = ""
+//    switch input % 2 {
+//    case 0:
+//        returnString = "짝"
+//    case 1:
+//        returnString = "홀"
+//    default:
+//        returnString = "에러"
+//    }
+//    return returnString
+//}
+//print(oddEven(5))
+
+
+/*
+ if temperatureInFahrenheit <= 32 {
+   print("It's very cold. Consider wearing a scarf.")
+ } else if temperatureInFahrenheit >= 86 {
+   print("It's really warm. Don't forget to wear sunscreen.")
+ } else {
+   print("It's not that cold. Wear a t-shirt.")
+ }
+ */
+
+var q = 33
+
+switch q {
+case 0...32:
+    print("It's very cold. Consider wearing a scarf.")
+case 33...86:
+    print("It's really warm. Don't forget to wear sunscreen.")
+default:
+    print("It's not that cold. Wear a t-shirt.")
+}
+var a = 3
+for i in 2...10 {
+    a *= 3
+}
+
+for j in (1...10).reversed() {
+    print(j)
+}
+
+var x = 10
+var result = 0
+for k in 1...x {
+    result += k
+}
+print(result)
+
+func threeMultiple(_ a: Int, _ b: Int, _ c:Int) -> Int {
+    switch (a,b,c) {
+    case let (x,y,z) where (x * y * z) % 2 == 0:
+        print("양수")
+    case let (x,y,z) where (x * y * z) % 2 == 1:
+        print("음수")
+    default:
+        print("ㅇㅇ")
+        
+    }
+    return 1
+}
+
+threeMultiple(3, 3, 3)
