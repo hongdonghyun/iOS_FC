@@ -14,6 +14,7 @@
 		7CDE6A1A23964EA700E0649B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CDE6A1923964EA700E0649B /* Assets.xcassets */; };
 		7CDE6A1D23964EA700E0649B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CDE6A1B23964EA700E0649B /* LaunchScreen.storyboard */; };
 		7CDE6A252396759200E0649B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE6A242396759200E0649B /* SecondViewController.swift */; };
+		7CE123A42397443000C33C1A /* models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE123A32397443000C33C1A /* models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7CDE6A1C23964EA700E0649B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CDE6A1E23964EA700E0649B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CDE6A242396759200E0649B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		7CE123A32397443000C33C1A /* models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				7CDE6A1B23964EA700E0649B /* LaunchScreen.storyboard */,
 				7CDE6A1E23964EA700E0649B /* Info.plist */,
 				7CDE6A242396759200E0649B /* SecondViewController.swift */,
+				7CE123A32397443000C33C1A /* models.swift */,
 			);
 			path = DogBirdCat;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CE123A42397443000C33C1A /* models.swift in Sources */,
 				7CDE6A252396759200E0649B /* SecondViewController.swift in Sources */,
 				7CDE6A1523964EA500E0649B /* ViewController.swift in Sources */,
 				7CDE6A1123964EA500E0649B /* AppDelegate.swift in Sources */,

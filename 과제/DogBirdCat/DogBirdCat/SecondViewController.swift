@@ -12,8 +12,10 @@ class SecondViewController: UIViewController {
     
     @IBOutlet weak var IncreaseAll: UIButton!
     @IBOutlet weak var imgView: UIImageView!
-    var currentCnt: [String:Int] = [:]
+    
+    var currentCnt: [Animal:Int] = [:]
     var currentImg = UIImage()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imgView.image = currentImg
@@ -29,7 +31,7 @@ class SecondViewController: UIViewController {
         }
         
         vc.buttonDict = currentCnt
-        vc.countLabel.text = "\(self.currentCnt["Dog"]!),\(self.currentCnt["Cat"]!),\(self.currentCnt["Bird"]!)"
+        vc.countLabel.text = "\(self.currentCnt[.Dog]!),\(self.currentCnt[.Cat]!),\(self.currentCnt[.Bird]!)"
         dismiss(animated: true)
     }
     
