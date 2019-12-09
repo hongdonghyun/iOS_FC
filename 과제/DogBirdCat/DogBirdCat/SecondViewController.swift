@@ -13,7 +13,7 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var IncreaseAll: UIButton!
     @IBOutlet weak var imgView: UIImageView!
     
-    var currentCnt: [Animal:Int] = [:]
+    var currentCnt: [Animal: Int] = [:]
     var currentImg = UIImage()
     
     override func viewDidLoad() {

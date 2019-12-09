@@ -33,6 +33,19 @@ class FirstViewController: UIViewController {
         
     }
     
+    private func didTapIncrease(animal: Animal) -> String {
+        buttonDict[animal] = buttonDict[animal]! + 1
+        
+        switch animal {
+        case .Dog:
+            return "개"
+        case .Cat:
+            return "구름이"
+        case .Bird:
+            return "토끼"
+        }
+    }
+    
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         guard let imgType = Animal(rawValue: identifier) else { return false }
         
@@ -48,23 +61,9 @@ class FirstViewController: UIViewController {
         }
     }
     
-    private func didTapIncrease(animal: Animal) -> String {
-        buttonDict[animal] = buttonDict[animal]! + 1
-        
-        switch animal {
-        case .Dog:
-            return "개"
-        case .Cat:
-            return "구름이"
-        case .Bird:
-            return "토끼"
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let secondViewController = segue.destination as? SecondViewController else { return }
         guard let identifier = segue.identifier, let imgType = Animal(rawValue: identifier) else { return }
-        
         
         super.prepare(for: segue, sender: sender)
         
