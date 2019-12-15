@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+class Singleton {
+    static let shared = Singleton()
+    var text: String = ""
+    
+    private init() {}
+}

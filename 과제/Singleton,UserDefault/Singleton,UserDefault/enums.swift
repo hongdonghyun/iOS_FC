@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+enum PressButtonEnum: String {
+    case singleton
+    case userdefaults
+}

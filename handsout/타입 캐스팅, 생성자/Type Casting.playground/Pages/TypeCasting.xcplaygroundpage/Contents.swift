@@ -11,29 +11,12 @@
 import UIKit
 
 class Shape {
-  var color = UIColor.black
-  
-  func draw() {
-    print("draw shape")
-  }
 }
 
 class Rectangle: Shape {
-  var cornerRadius = 0.0
-  override var color: UIColor {
-    get { return .white }
-    set { }
-  }
-  
-  override func draw() {
-    print("draw rect")
-  }
 }
 
 class Triangle: Shape {
-  override func draw() {
-    print("draw triangle")
-  }
 }
 
 /***************************************************
@@ -61,25 +44,25 @@ print("\n---------- [ Upcasting ] ----------\n")
 
 
 let rect = Rectangle()
-rect.color
-rect.cornerRadius
+//rect.color
+//rect.cornerRadius
 rect as Shape
 (rect as Shape)
-(rect as Shape).color
+//(rect as Shape).color
 //(rect as Shape).cornerRadius
 (rect as Rectangle)
-(rect as Rectangle).color
-(rect as Rectangle).cornerRadius
+//(rect as Rectangle).color
+//(rect as Rectangle).cornerRadius
 
 
 
 let upcastedRect: Shape = Rectangle()
 type(of: upcastedRect)   //
 
-upcastedRect.color
+//upcastedRect.color
 //upcastedRect.cornerRadius
 
-(upcastedRect as Shape).color
+//(upcastedRect as Shape).color
 // 부모에서 자식으로 접근하려고 함
 // 부모 -> 자식
 // 자식클래스는 부모 클래스가 무조건 하나
@@ -102,14 +85,14 @@ print("\n---------- [ Downcasting ] ----------\n")
  ***************************************************/
 
 
-let shapeRect: Shape = Rectangle()
-var downcastedRect: Rectangle? = Rectangle()
+let shapeTriangle: Shape = Triangle()
+//var downcastedRect: Rectangle? = Rectangle()
 
 //downcastedRect = shapeRect //
 //downcastedRect = shapeRect as Rectangle
 //
-//downcastedRect = shapeRect as? Rectangle  //
-//downcastedRect = shapeRect as! Rectangle  //
+print(shapeTriangle as? Triangle)
+print(shapeTriangle as? Rectangle)
 
 //as? : 강제 타입 변환 시도. 변환이 성공하면 Optional 값을 가지며, 실패 시에는 nil 반환
 //as! : 강제 타입 변환 시도. 성공 시 언래핑 된 값을 가지며, 실패 시 런타임 에러 발생
@@ -155,9 +138,9 @@ let list = [shape, rectangle, triangle]
 print("\n---------- [ ] ----------\n")
 
 // let list: [Shape] = [shape, rectangle, triangle]
-for element in list  {
-  element.draw()
-}
+//for element in list  {
+//  element.draw()
+//}
 
 
 //: [Next](@next)

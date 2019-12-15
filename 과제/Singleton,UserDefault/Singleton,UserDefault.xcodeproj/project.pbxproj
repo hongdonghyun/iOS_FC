@@ -13,6 +13,9 @@
 		7CF6205E239A414800BDB642 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CF6205C239A414800BDB642 /* Main.storyboard */; };
 		7CF62060239A414A00BDB642 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF6205F239A414A00BDB642 /* Assets.xcassets */; };
 		7CF62063239A414A00BDB642 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CF62061239A414A00BDB642 /* LaunchScreen.storyboard */; };
+		7CF6206B239A419200BDB642 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF6206A239A419200BDB642 /* SecondViewController.swift */; };
+		7CF6206D239A41B600BDB642 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF6206C239A41B600BDB642 /* Singleton.swift */; };
+		7CF6206F239A4B2A00BDB642 /* enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF6206E239A4B2A00BDB642 /* enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		7CF6205F239A414A00BDB642 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CF62062239A414A00BDB642 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CF62064239A414A00BDB642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CF6206A239A419200BDB642 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		7CF6206C239A41B600BDB642 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		7CF6206E239A4B2A00BDB642 /* enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				7CF6205F239A414A00BDB642 /* Assets.xcassets */,
 				7CF62061239A414A00BDB642 /* LaunchScreen.storyboard */,
 				7CF62064239A414A00BDB642 /* Info.plist */,
+				7CF6206A239A419200BDB642 /* SecondViewController.swift */,
+				7CF6206C239A41B600BDB642 /* Singleton.swift */,
+				7CF6206E239A4B2A00BDB642 /* enums.swift */,
 			);
 			path = "Singleton,UserDefault";
 			sourceTree = "<group>";
@@ -138,8 +147,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CF6206B239A419200BDB642 /* SecondViewController.swift in Sources */,
 				7CF6205B239A414800BDB642 /* ViewController.swift in Sources */,
 				7CF62057239A414800BDB642 /* AppDelegate.swift in Sources */,
+				7CF6206D239A41B600BDB642 /* Singleton.swift in Sources */,
+				7CF6206F239A4B2A00BDB642 /* enums.swift in Sources */,
 				7CF62059239A414800BDB642 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

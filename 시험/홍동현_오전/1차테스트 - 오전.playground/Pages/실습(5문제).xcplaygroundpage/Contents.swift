@@ -35,7 +35,7 @@
 //}
 //
 //year(2019)
-//
+
 //
 ///*
 // 주어진 문자 배열에서 중복되지 않는 문자만을 뽑아내 배열로 반환해주는 함수
@@ -76,34 +76,49 @@
 // */
 //
 //
-//func isPrime(_ i: Int) -> Bool {
-//    if i == 2 {
-//        return true
-//    } else {
-//        for j in 2..<i {
-//            if i % j == 0 {
-//                return false
-//            }
-//        }
+
+func isPrime(_ i: Int) -> Bool {
+    
+    for j in 2..<i {
+        if i % j == 0 {
+            return false
+        }
+    }
+    
+    return true
+}
+
+//func isPrime(number: Int) -> Bool {
+//    for i in 2..<number {
+//        if number % i == 0 {
+//            return false
 //    }
 //    return true
 //}
-//
-//func checkPrimeNumbers(number: Int) -> Void {
-//    var primeArray: [Int] = []
-//    if number == 1 {
-//        print(primeArray)
-//    } else {
-//        for i in 2...number {
-//            if isPrime(i) {
-//                primeArray.append(i)
-//            }
-//        }
-//    }
-//    print("\(number)보다 작거나 같은 소수는\(primeArray)이고 총 \(primeArray.count)개입니다.")
-//}
+
+func checkPrimeNumbers(number: Int) {
+    var primeArray: [Int] = []
+    for i in 2..<number {
+        if isPrime(i) {
+            primeArray.append(i)
+        }
+    }
+    
+    print("\(number)보다 작거나 같은 소수는\(primeArray)이고 총 \(primeArray.count)개입니다.")
+}
+ 
+let someTuple = (1,90)
+switch someTuple {
+    case let (x, y) where y == 90:
+        print("x: \(x), y: \(y)")
+        fallthrough
+    case (1 ,let x):
+        print("x: \(x)")
+    default:
+        print("default")
+}
 //checkPrimeNumbers(number: 1)
-//checkPrimeNumbers(number: 10)
+//checkPrimeNumbers(number: 2)
 //checkPrimeNumbers(number: 100)
 //
 //
@@ -124,11 +139,62 @@
 // 구글에 로그인하였습니다. (아이디 - google@gmail.com, 비밀번호 - 0000)
 // */
 //
-//enum Site {
-//    case google(_ ID: String, _ PWD: String)
-//    case kakao(_ ID: String, _ PWD: String)
+enum Site {
+    case Google(_ ID: String, _ PWD: String)
+//    case Kakao(_ ID: String, _ PWD: String)
 //    case naver(_ ID: String, _ PWD: String)
+//    case Google
+    case kakao
+    case naver
+}
+
+//print(Site.Google("hong3","12345678"))
+//func oddEven(_ input: Int) -> Bool {
+//    input % 2 == 0 ? true : false
+//}
+
+var someVariable: Int?
+//someVariable ?? 0
+//someVariable!
+class Person {
+    var checkCard: CheckCard?
+}
+
+class CheckCard {
+    var balance: Money?
+    var sign: Bool = true
+}
+
+class Money {
+    var won = 123
+}
+
+class Hong3 {
+    var _balance: Int = 0
+    var balance: Int {
+        get {
+            return _balance
+        }
+        set {
+            _balance = newValue
+        }
+    }
+}
+var balance: Int = 0 {
+    didSet {
+        print("balance를 \(oldValue)로 설정합니다.")
+    }
+    willSet {
+        print("balance를 \(newValue)로 설정했습니다.")
+    }
+}
 //
+//let hong3 = Person()
+//print(hong3.checkCard?.balance?.won)
+//let S20 = CheckCard()
+//hong3.checkCard = S20
+//print(hong3.checkCard?.sign)
+
 //    func signIn() {
 //        switch self {
 //        case .google(let i, let p):
@@ -142,6 +208,7 @@
 //        }
 //    }
 //}
+
 //
 //let google = Site.google("hong4367@gmail.com","12345")
 //let kakao = Site.kakao("hong4367@gmail.com","12345")
