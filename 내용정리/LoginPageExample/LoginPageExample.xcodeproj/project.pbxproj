@@ -7,15 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C43BC6523A62C18000BE36A /* BViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43BC6423A62C18000BE36A /* BViewController.swift */; };
+		7C5EBF4F23A51FBC000C5715 /* UserModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5EBF4E23A51FBC000C5715 /* UserModels.swift */; };
+		7C5EBF5123A52157000C5715 /* CustomUnderLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5EBF5023A52157000C5715 /* CustomUnderLine.swift */; };
 		7CF46E9C23A344520038626A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF46E9B23A344520038626A /* AppDelegate.swift */; };
 		7CF46E9E23A344520038626A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF46E9D23A344520038626A /* SceneDelegate.swift */; };
 		7CF46EA023A344520038626A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF46E9F23A344520038626A /* ViewController.swift */; };
 		7CF46EA323A344520038626A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CF46EA123A344520038626A /* Main.storyboard */; };
 		7CF46EA523A344550038626A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CF46EA423A344550038626A /* Assets.xcassets */; };
 		7CF46EA823A344550038626A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CF46EA623A344550038626A /* LaunchScreen.storyboard */; };
+		7CF46EB023A37F230038626A /* CustomLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF46EAF23A37F230038626A /* CustomLogoView.swift */; };
+		7CF46EB223A382B60038626A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF46EB123A382B60038626A /* CustomTextField.swift */; };
+		7CF46EB523A390CA0038626A /* ExtensionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF46EB423A390CA0038626A /* ExtensionTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C43BC6423A62C18000BE36A /* BViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BViewController.swift; sourceTree = "<group>"; };
+		7C5EBF4E23A51FBC000C5715 /* UserModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModels.swift; sourceTree = "<group>"; };
+		7C5EBF5023A52157000C5715 /* CustomUnderLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnderLine.swift; sourceTree = "<group>"; };
 		7CF46E9823A344520038626A /* LoginPageExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginPageExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF46E9B23A344520038626A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CF46E9D23A344520038626A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +33,9 @@
 		7CF46EA423A344550038626A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CF46EA723A344550038626A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CF46EA923A344550038626A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CF46EAF23A37F230038626A /* CustomLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomLogoView.swift; path = ../CustomLogoView.swift; sourceTree = "<group>"; };
+		7CF46EB123A382B60038626A /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomTextField.swift; path = ../CustomTextField.swift; sourceTree = "<group>"; };
+		7CF46EB423A390CA0038626A /* ExtensionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +68,37 @@
 		7CF46E9A23A344520038626A /* LoginPageExample */ = {
 			isa = PBXGroup;
 			children = (
+				7CF46E9F23A344520038626A /* ViewController.swift */,
+				7C43BC6423A62C18000BE36A /* BViewController.swift */,
+				7CF46EB623A3AEE50038626A /* Views */,
+				7CF46EB323A390B20038626A /* Extensions */,
 				7CF46E9B23A344520038626A /* AppDelegate.swift */,
 				7CF46E9D23A344520038626A /* SceneDelegate.swift */,
-				7CF46E9F23A344520038626A /* ViewController.swift */,
 				7CF46EA123A344520038626A /* Main.storyboard */,
 				7CF46EA423A344550038626A /* Assets.xcassets */,
 				7CF46EA623A344550038626A /* LaunchScreen.storyboard */,
 				7CF46EA923A344550038626A /* Info.plist */,
+				7C5EBF4E23A51FBC000C5715 /* UserModels.swift */,
 			);
 			path = LoginPageExample;
+			sourceTree = "<group>";
+		};
+		7CF46EB323A390B20038626A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7CF46EB423A390CA0038626A /* ExtensionTextField.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7CF46EB623A3AEE50038626A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7CF46EB123A382B60038626A /* CustomTextField.swift */,
+				7CF46EAF23A37F230038626A /* CustomLogoView.swift */,
+				7C5EBF5023A52157000C5715 /* CustomUnderLine.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +173,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CF46EA023A344520038626A /* ViewController.swift in Sources */,
+				7CF46EB523A390CA0038626A /* ExtensionTextField.swift in Sources */,
+				7C5EBF5123A52157000C5715 /* CustomUnderLine.swift in Sources */,
+				7C43BC6523A62C18000BE36A /* BViewController.swift in Sources */,
 				7CF46E9C23A344520038626A /* AppDelegate.swift in Sources */,
+				7CF46EB023A37F230038626A /* CustomLogoView.swift in Sources */,
 				7CF46E9E23A344520038626A /* SceneDelegate.swift in Sources */,
+				7C5EBF4F23A51FBC000C5715 /* UserModels.swift in Sources */,
+				7CF46EB223A382B60038626A /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,3 +7,6 @@
 //
 
 import Foundation
+
+let ID = "hong3"
+let PWD = "123456"
