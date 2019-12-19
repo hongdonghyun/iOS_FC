@@ -22,6 +22,8 @@ final class TableViewCellStyle: UIViewController {
     tableView.rowHeight = 70
     tableView.dataSource = self
     view.addSubview(tableView)
+    
+    tableView.estimatedRowHeight = UITableView.automaticDimension
   }
 }
 
@@ -54,7 +56,9 @@ extension TableViewCellStyle: UITableViewDataSource {
     
     // 공통 속성 세팅
     cell.textLabel?.text = "\(indexPath.row * 1000)"
-    
+    cell.detailTextLabel?.text = "subTitle"
+    cell.imageView?.image = UIImage(named: "bear")
+    cell.accessoryType = .detailButton
     return cell
   }
 }

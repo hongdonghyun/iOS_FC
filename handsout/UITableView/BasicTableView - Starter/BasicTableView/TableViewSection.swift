@@ -9,42 +9,56 @@
 import UIKit
 
 final class TableViewSection: UIViewController {
-  
-  override var description: String { "TableView - Section" }
-  
-  /***************************************************
-   섹션을 나누어 데이터 목록 출력하기
-   ***************************************************/
-
-  lazy var sectionTitles: [String] = fruitsDict.keys.sorted()
-  let fruitsDict = [
-    "A": ["Apple", "Avocado"],
-    "B": ["Banana", "Blackberry"],
-    "C": ["Cherry", "Coconut"],
-    "D": ["Durian"],
-  ]
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    let tableView = UITableView(frame: view.frame)
-    tableView.dataSource = self
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CellId")
-    view.addSubview(tableView)
-  }
+    
+    override var description: String { "TableView - Section" }
+    
+    /***************************************************
+     섹션을 나누어 데이터 목록 출력하기
+     ***************************************************/
+    
+    lazy var sectionTitles: [String] = fruitsDict.keys.sorted()
+    let fruitsDict = [
+        "A": ["Apple", "Avocado"],
+        "B": ["Banana", "Blackberry"],
+        "C": ["Cherry", "Coconut"],
+        "D": ["Durian"],
+        "H": ["Hong3"]
+    ]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let tableView = UITableView(frame: view.frame)
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CellId")
+        view.addSubview(tableView)
+    }
 }
 
 
 // MARK: - UITableViewDataSource
 
 extension TableViewSection: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return fruitsDict[sectionTitles[section]]!.count
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "CellId", for: indexPath)
-    let fruits = fruitsDict[sectionTitles[indexPath.section]]!
-    cell.textLabel?.text = "\(fruits[indexPath.row])"
-    return cell
-  }
+    
+    // 전체 수
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return fruitsDict.count
+    }
+    
+    // 섹션 헤더
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        print(section)
+        return sectionTitles[section]
+    }
+    
+    // 섹션
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fruitsDict[sectionTitles[section]]!.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellId", for: indexPath)
+        let fruits = fruitsDict[sectionTitles[indexPath.section]]!
+        cell.textLabel?.text = "\(fruits[indexPath.row])"
+        return cell
+    }
 }
