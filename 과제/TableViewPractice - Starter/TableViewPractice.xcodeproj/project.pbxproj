@@ -17,7 +17,6 @@
 		52B52588225E0CAD00E3CDD4 /* TableViewRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B52587225E0CAD00E3CDD4 /* TableViewRefresh.swift */; };
 		52B5258A225E0CB700E3CDD4 /* TableViewMultipleSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B52589225E0CB700E3CDD4 /* TableViewMultipleSelection.swift */; };
 		52B5258C225E0CC000E3CDD4 /* TableViewAccessoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B5258B225E0CC000E3CDD4 /* TableViewAccessoryType.swift */; };
-		7CAA892A23AB90530012AE59 /* asdfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAA892923AB90530012AE59 /* asdfTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		52B52587225E0CAD00E3CDD4 /* TableViewRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewRefresh.swift; sourceTree = "<group>"; };
 		52B52589225E0CB700E3CDD4 /* TableViewMultipleSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewMultipleSelection.swift; sourceTree = "<group>"; };
 		52B5258B225E0CC000E3CDD4 /* TableViewAccessoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewAccessoryType.swift; sourceTree = "<group>"; };
-		7CAA892923AB90530012AE59 /* asdfTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = asdfTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +71,6 @@
 				52B52587225E0CAD00E3CDD4 /* TableViewRefresh.swift */,
 				52B52589225E0CB700E3CDD4 /* TableViewMultipleSelection.swift */,
 				52B5258B225E0CC000E3CDD4 /* TableViewAccessoryType.swift */,
-				7CAA892923AB90530012AE59 /* asdfTableViewCell.swift */,
 				52B52573225E0BCC00E3CDD4 /* Main.storyboard */,
 				52B52576225E0BCE00E3CDD4 /* Assets.xcassets */,
 				52B52578225E0BCE00E3CDD4 /* LaunchScreen.storyboard */,
@@ -156,7 +153,6 @@
 				52B5258C225E0CC000E3CDD4 /* TableViewAccessoryType.swift in Sources */,
 				52B52584225E0C9600E3CDD4 /* TableViewNumbers.swift in Sources */,
 				52B5258A225E0CB700E3CDD4 /* TableViewMultipleSelection.swift in Sources */,
-				7CAA892A23AB90530012AE59 /* asdfTableViewCell.swift in Sources */,
 				52B52570225E0BCC00E3CDD4 /* AppDelegate.swift in Sources */,
 				52B52588225E0CAD00E3CDD4 /* TableViewRefresh.swift in Sources */,
 				52B52586225E0CA300E3CDD4 /* TableViewSection.swift in Sources */,

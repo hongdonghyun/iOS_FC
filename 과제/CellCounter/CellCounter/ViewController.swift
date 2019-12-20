@@ -44,6 +44,7 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: CustomTableViewCellDelegate {
     func upCount(_ cell: CustomTableViewCell) {
         guard let index = tableView.indexPath(for: cell) else { return }
+              
         data[index.row] += 1
         cell.countLabel.text = "\(data[index.row])"
     }
