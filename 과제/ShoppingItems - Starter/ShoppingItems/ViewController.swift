@@ -39,10 +39,12 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as? ItemCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as? ItemCell, imageArray.count > indexPath.row else { return UITableViewCell() }
         
-        cell.productImageView?.image = UIImage(named: imageArray[indexPath.row])
-        cell.productLabel.text = "test"
+        cell.config(
+            productImage: UIImage(named: imageArray[indexPath.row]),
+            productContent: imageArray[indexPath.row]
+        )
         return cell
     }
 }

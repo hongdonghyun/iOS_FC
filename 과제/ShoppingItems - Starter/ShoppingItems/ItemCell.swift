@@ -11,10 +11,18 @@ import UIKit
 
 final class ItemCell: UITableViewCell {
     
+    
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     
-    
+}
+
+extension ItemCell {
+    func config(productImage: UIImage?, productContent: String?) {
+        
+        productImageView.image = productImage
+        productLabel.text = productContent
+    }
 }
