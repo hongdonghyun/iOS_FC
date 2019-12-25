@@ -8,11 +8,15 @@
 
 import UIKit
 
+@IBDesignable
 class CustomButton: UIButton {
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        self.layer.cornerRadius = 0.5 * self.bounds.size.width
+    var cornerRadius: CGFloat = 0 {
+      didSet { layer.cornerRadius = cornerRadius }
     }
-
+    
+    override func layoutSubviews() {
+      super.layoutSubviews()
+      cornerRadius = frame.width / 2
+    }
 }

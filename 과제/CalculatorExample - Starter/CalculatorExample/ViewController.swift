@@ -12,13 +12,13 @@ final class ViewController: UIViewController {
     @IBOutlet weak var displayLabel: UILabel!
     
     // 입력받은 값
-    var inputText = ""
+    private var inputText = ""
     // 출력될 값
-    var value: Double = 0
+    private var value: Double = 0
     // 현재 연산자
-    var sign = 0
+    private var sign = 0
     // 버튼 활성/비활성
-    var flag = true
+    private var flag = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +36,8 @@ final class ViewController: UIViewController {
     // 넘버패드 액션
     @IBAction func numberAction(_ sender: CustomButton) {
         guard flag else { return }
+        guard inputText.count < 13 else { return }
+        
         let senderTag = "\(sender.tag)"
         // 최초 0중복방지
         inputText = displayLabel.text == "0" ? senderTag : inputText + senderTag
@@ -85,7 +87,7 @@ final class ViewController: UIViewController {
     // 연산로직
     private func calculate() {
         // 입력받은 값이 없으면 튕겨냄
-        guard let value2 = Double(inputText) else { return }
+        guard let value2 = Double(inputText.replacingOccurrences(of: ",", with: "")) else { return }
         // 현재 연산자에 따라 다른연산
         switch sign {
         case -1:

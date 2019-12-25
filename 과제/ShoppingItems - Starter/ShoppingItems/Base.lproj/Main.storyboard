@@ -38,7 +38,10 @@
                                                         <constraint firstAttribute="height" constant="30" id="ibp-Po-f6h"/>
                                                         <constraint firstAttribute="width" constant="30" id="wAm-Mz-Ta1"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button" image="add"/>
+                                                    <state key="normal" image="add"/>
+                                                    <connections>
+                                                        <action selector="buttonAction:" destination="cAq-vS-Whd" eventType="touchUpInside" id="Pd0-A4-nt3"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="countLabel" text="1" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuS-pc-oZH">
                                                     <rect key="frame" x="300" y="11" width="20" height="58"/>
