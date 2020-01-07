@@ -17,7 +17,6 @@ struct Product {
 
 final class ItemCell: UITableViewCell {
     
-    
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
@@ -44,7 +43,6 @@ final class ItemCell: UITableViewCell {
 
 extension ItemCell {
     func config(productImage: UIImage?, productContent: String?, maxCount: Int) {
-        
         productImageView.image = productImage
         productLabel.text  = productContent
         productMaxCount = maxCount

@@ -142,4 +142,31 @@ if let person = Person(name: "James", age: -5) {
 
 
 
+class SomeClass {
+    var someText: String
+    var someInt: Int
+    var someBool: Bool
+    
+    init(text: String, someInt: Int, someBool: Bool) {
+        self.someText = text
+        self.someInt = someInt
+        self.someBool = someBool
+    }
+    
+    init(text: String, someBool: Bool) {
+        self.someText = text
+        self.someBool = someBool
+        self.someInt = 10
+    }
+    
+    convenience init(someBool: Bool, someInt: Int) {
+        self.init(text: "hello world", someInt: someInt, someBool: someBool)
+    }
+}
+
+var SC = SomeClass(someBool: true, someInt: 30)
+SC.someBool
+SC.someText
+SC.someInt
+
 //: [Next](@next)
