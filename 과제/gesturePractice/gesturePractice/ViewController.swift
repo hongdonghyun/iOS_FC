@@ -60,7 +60,7 @@ extension ViewController {
 
 // MARK: - TapGesture
 extension ViewController {
-    func setUpTapGesture() {
+    private func setUpTapGesture() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGesture(_:)))
         view.addGestureRecognizer(tapGestureRecognizer)
     }
@@ -77,13 +77,11 @@ extension ViewController {
 // MARK: - UI
 extension ViewController {
     private func setUpUI() {
-        print("run")
         let layoutGuide = view.safeAreaLayoutGuide
         let labels = [countLabel, coordinateLabel, currentModeLabel, modeChangeBtn]
         labels.forEach { label in
             label.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview(label)
-            
         }
         
         NSLayoutConstraint.activate([
@@ -117,7 +115,7 @@ extension ViewController {
     private func setCoordinateText(_ coordinate: CGPoint) {
         let pointX = String(format: "%0.1f", coordinate.x)
         let pointY = String(format: "%0.1f", coordinate.y)
-        coordinateLabel.text = "좌표 : \(pointX), \(pointY)"
+        coordinateLabel.text = "좌표 : (\(pointX), \(pointY))"
     }
     
     private func displayCurrentMode(_ index: Int) {
@@ -148,7 +146,7 @@ extension ViewController {
         let absY = abs(origin.y - destination.y)
         let distanceX = pow(absX,2)
         let distanceY = pow(absY,2)
-        return (distanceX+distanceY).squareRoot()
+        return (distanceX + distanceY).squareRoot()
     }
     
     private func calculateClick(origin: CGPoint) {
