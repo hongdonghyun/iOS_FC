@@ -1,0 +1,6 @@
+framework module Pods_DutchApp {
+  umbrella header "Pods-DutchApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
