@@ -25,6 +25,7 @@ class RecentViewController: UITableViewController {
             userDataArray = tempArray.compactMap {
                 try? decoder.decode(ItemData.self, from: $0 as! Data)
             }
+            tableView.reloadData()
         }
     }
     
@@ -49,9 +50,9 @@ extension RecentViewController {
         nextVC.receiveTotalPrice = userData.totalPrice
         nextVC.receiveTotalPerson = userData.totalPerson
         nextVC.receivePriceN = userData.priceN
-        nextVC.receiveBankName = userData.accountInfo.selectedBank
-        nextVC.receiveAccountNumber = userData.accountInfo.accountNumber
-        nextVC.receiveAccountHolder = userData.accountInfo.accountHolder
+        nextVC.receiveBankName = userData.accountInfo?.selectedBank
+        nextVC.receiveAccountNumber = userData.accountInfo?.accountNumber
+        nextVC.receiveAccountHolder = userData.accountInfo?.accountHolder
         
         self.navigationController?.pushViewController(nextVC, animated: true)
         

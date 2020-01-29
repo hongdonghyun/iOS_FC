@@ -44,14 +44,14 @@ class ReceiptViewController: UIViewController {
     
     private let itemNameLabel: UILabel = {
         let label = CustomLabel()
-        label.text = "밥플러스"
+//        label.text = "밥플러스"
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         return label
     }()
     
     private let totalPriceLabel: UILabel = {
         let label = CustomLabel()
-        label.text = "10000"
+//        label.text = "10000"
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         return label
     }()
@@ -65,14 +65,14 @@ class ReceiptViewController: UIViewController {
     
     private let totalPersonLabel: UILabel = {
         let label = CustomLabel()
-        label.text = "4명"
+//        label.text = "4명"
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         return label
     }()
     
     private let pricePerPersonLabel: UILabel = {
         let label = CustomLabel()
-        label.text = "1인당 2,500원"
+//        label.text = "1인당 2,500원"
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         return label
     }()
@@ -97,7 +97,7 @@ class ReceiptViewController: UIViewController {
     
     private let bankRightLabel: UILabel = {
         let label = CustomLabel()
-        label.text = "신한"
+//        label.text = "신한"
         return label
     }()
     
@@ -109,7 +109,7 @@ class ReceiptViewController: UIViewController {
     
     private let accountRightLabel: UILabel = {
         let label = CustomLabel()
-        label.text = "110363917368"
+//        label.text = "110363917368"
         return label
     }()
     
@@ -121,7 +121,7 @@ class ReceiptViewController: UIViewController {
     
     private let holderRightLabel: UILabel = {
         let label = CustomLabel()
-        label.text = "홍동현"
+//        label.text = "홍동현"
         return label
     }()
     
@@ -133,7 +133,7 @@ class ReceiptViewController: UIViewController {
     
     private let priceRightLabel: UILabel = {
         let label = CustomLabel()
-        label.text = "2,500원"
+//        label.text = "2,500원"
         return label
     }()
     
@@ -210,19 +210,19 @@ class ReceiptViewController: UIViewController {
         }
         set { totalPersonLabel.text = newValue + "명" }
     }
-    var receiveBankName: String {
+    var receiveBankName: String? {
         get {
             bankRightLabel.text ?? ""
         }
         set { bankRightLabel.text = newValue }
     }
-    var receiveAccountNumber: String {
+    var receiveAccountNumber: String? {
         get {
             accountRightLabel.text ?? ""
         }
         set { accountRightLabel.text = newValue }
     }
-    var receiveAccountHolder: String {
+    var receiveAccountHolder: String? {
         get {
             holderRightLabel.text ?? ""
         }
@@ -246,8 +246,10 @@ class ReceiptViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpScrollView()
+        view.backgroundColor = .white
 
     }
+
 }
 
 extension ReceiptViewController {
@@ -263,8 +265,9 @@ extension ReceiptViewController {
         1인당 : \(amountToString(amount: receivePriceN))원\n
         ----------------------------\n
         """
-        if !receiveBankName.isEmpty && !receiveAccountNumber.isEmpty && !receiveAccountNumber.isEmpty && !tossLink.isEmpty {
-            shareText += "보 낼 곳 : \(receiveBankName) \(receiveAccountNumber) \(receiveAccountHolder)\n"
+        if let bankName = receiveBankName, let accountNumber = receiveAccountNumber,
+            let accountHolder = receiveAccountHolder, !bankName.isEmpty && !accountHolder.isEmpty && !accountNumber.isEmpty && !tossLink.isEmpty {
+            shareText += "보 낼 곳 : \(bankName) \(accountNumber) \(accountHolder)\n"
             shareText += "\n"
             shareText += "토 스 : \(tossLink)\n"
             shareText += "----------------------------\n"
@@ -274,7 +277,6 @@ extension ReceiptViewController {
     }
     
     @objc private func shareButtonAction(_ sender: UIButton) {
-        
         let activityVC =  UIActivityViewController(activityItems: [createShareText()], applicationActivities: nil)
         self.present(activityVC, animated: true, completion: nil)
     }
@@ -285,11 +287,12 @@ extension ReceiptViewController {
     }
     
     private func createTossLink(){
-        guard !receiveBankName.isEmpty && !receiveAccountNumber.isEmpty && !receivePriceN.isEmpty else { return }
-        SimpleToss().POSTrequest(bank: receiveBankName, account: receiveAccountNumber, amount: receivePriceN) { (result) in
+        guard let bankName = receiveBankName, let accountNumber = receiveAccountNumber, !receivePriceN.isEmpty, !bankName.isEmpty, !accountNumber.isEmpty else { return }
+        
+        SimpleToss().POSTrequest(bank: bankName, account: accountNumber, amount: receivePriceN) { (result) in
                 DispatchQueue.main.async {
                     self.tossLinkRightButton.setTitle("\(result.success.link)", for: .normal)
-                    
+
                 }
             self.tossLink = result.success.link
             }

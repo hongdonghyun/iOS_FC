@@ -61,7 +61,7 @@ class RecentItemCell: UITableViewCell {
     func config(itemName name: String, saveDate date: String, amount: String) {
         self.itemName.text = name
         self.saveDate.text = date
-        self.amount.text = amount + "원"
+        self.amount.text = amountToString(amount: amount) + "원"
     }
 }
 

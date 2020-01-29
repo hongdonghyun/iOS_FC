@@ -369,23 +369,23 @@ extension ViewController {
         let _totalPrice = "\(amount)"
         let _totalPerson = "\(numberOfPerson)"
         let _priceN = "\(amount / numberOfPerson)"
-        let _accountHolder = accountHolder
-        let _selectedBank = selectedBank
-        let _accountNumber = accountNo
+        var data = ItemData(saveDate: reportingDate, itemName: itemName, totalPrice: _totalPrice, totalPerson: _totalPerson, priceN: _priceN)
         
-        let data = ItemData(saveDate: reportingDate, itemName: itemName, totalPrice: _totalPrice, totalPerson: _totalPerson, priceN: _priceN, accountInfo: AccountData(accountHolder: _accountHolder, selectedBank: _selectedBank, accountNumber: _accountNumber)).encode()!
+        if !accountHolder.isEmpty && !selectedBank.isEmpty && !accountNo.isEmpty {
+            data.accountInfo = AccountData(accountHolder: accountHolder, selectedBank: selectedBank, accountNumber: accountNo)
+            nextVC.receiveBankName = selectedBank
+            nextVC.receiveAccountNumber = accountNo
+            nextVC.receiveAccountHolder = accountHolder
+        }
         
         if var tempArray = userDefault.array(forKey: "info"), !tempArray.isEmpty {
-            tempArray.append(data)
+            tempArray.append(data.encode()!)
             userDefault.set(tempArray, forKey: "info")
-        } else { userDefault.set([data], forKey: "info") }
+        } else { userDefault.set([data.encode()!], forKey: "info"); print("Save2") }
         
         nextVC.receiveItemName = itemName
         nextVC.receiveTotalPrice = _totalPrice
         nextVC.receiveTotalPerson = _totalPerson
-        nextVC.receiveBankName = _selectedBank
-        nextVC.receiveAccountNumber = _accountNumber
-        nextVC.receiveAccountHolder = _accountHolder
         nextVC.receivePriceN = _priceN
         
         self.navigationController?.pushViewController(nextVC, animated: true)
