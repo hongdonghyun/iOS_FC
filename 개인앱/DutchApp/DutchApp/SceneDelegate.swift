@@ -26,11 +26,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let tabBar = UITabBarController()
             let main = UINavigationController(rootViewController: ViewController())
             let recent = UINavigationController(rootViewController: RecentViewController())
-            let receipt = UINavigationController(rootViewController: ReceiptViewController())
+//            let receipt = UINavigationController(rootViewController: ReceiptViewController())
             main.tabBarItem = UITabBarItem(title: "계산", image: nil, tag: 0)
             recent.tabBarItem = UITabBarItem(title: "최근 목록", image: nil, tag: 1)
-            receipt.tabBarItem = UITabBarItem(title: "영수증", image: nil, tag: 2)
-            tabBar.viewControllers = [main, recent, receipt]
+//            receipt.tabBarItem = UITabBarItem(title: "영수증", image: nil, tag: 2)
+            tabBar.viewControllers = [main, recent]
             window.rootViewController = tabBar
             self.window = window
             window.makeKeyAndVisible()

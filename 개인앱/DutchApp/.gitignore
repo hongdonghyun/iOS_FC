@@ -23,6 +23,8 @@
 .AppleDouble
 .LSOverride
 
+*.xcassets
+
 # Icon must end with two \r
 Icon
 

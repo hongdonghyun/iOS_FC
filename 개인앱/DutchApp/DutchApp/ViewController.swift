@@ -149,6 +149,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "N빵"
         setUpUI()
         
     }
@@ -365,14 +366,28 @@ extension ViewController {
         guard TFemptyAction() else { return }
         saveProperty()
         let nextVC = ReceiptViewController()
+        let _totalPrice = "\(amount)"
+        let _totalPerson = "\(numberOfPerson)"
+        let _priceN = "\(amount / numberOfPerson)"
+        let _accountHolder = accountHolder
+        let _selectedBank = selectedBank
+        let _accountNumber = accountNo
+        
+        let data = ItemData(saveDate: reportingDate, itemName: itemName, totalPrice: _totalPrice, totalPerson: _totalPerson, priceN: _priceN, accountInfo: AccountData(accountHolder: _accountHolder, selectedBank: _selectedBank, accountNumber: _accountNumber)).encode()!
+        
+        if var tempArray = userDefault.array(forKey: "info"), !tempArray.isEmpty {
+            tempArray.append(data)
+            userDefault.set(tempArray, forKey: "info")
+        } else { userDefault.set([data], forKey: "info") }
+        
         nextVC.receiveItemName = itemName
-        nextVC.receiveTotalPrice = "\(amount)"
-        nextVC.receiveTotalPerson = "\(numberOfPerson)"
-        nextVC.receiveBankName = selectedBank
-        nextVC.receiveAccountNumber = accountNo
-        nextVC.receiveAccountHolder = accountHolder
-        nextVC.receivePriceN = "\(amount / numberOfPerson)"
-
+        nextVC.receiveTotalPrice = _totalPrice
+        nextVC.receiveTotalPerson = _totalPerson
+        nextVC.receiveBankName = _selectedBank
+        nextVC.receiveAccountNumber = _accountNumber
+        nextVC.receiveAccountHolder = _accountHolder
+        nextVC.receivePriceN = _priceN
+        
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     

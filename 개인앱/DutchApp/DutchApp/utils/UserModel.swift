@@ -10,8 +10,24 @@ import Foundation
 
 struct ItemData: Codable {
     var saveDate: String
-    var reportingDate: String
-    var accountInfo: AccountData
+    var itemName: String
+    var totalPrice: String
+    var totalPerson: String
+    var priceN: String
+    var accountInfo: AccountData?
+}
+
+extension ItemData {
+    func encode() -> Data? {
+        guard let encodeData = try? encoder.encode(self) else { return nil }
+        return encodeData
+    }
+    
+    func decode(rawData : Data) -> ItemData? {
+        guard let decodeData = try? decoder.decode(ItemData.self, from: rawData) else { return nil }
+        return decodeData
+        
+    }
 }
 
 struct AccountData: Codable {

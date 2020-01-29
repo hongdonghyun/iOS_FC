@@ -18,8 +18,8 @@ struct TossRequest: Codable {
 // Error handling 아직 정의안됨
 extension TossRequest {
     func encode() -> Data? {
-        guard let returnData = try? encoder.encode(self) else { return nil }
-        return returnData
+        guard let encodeData = try? encoder.encode(self) else { return nil }
+        return encodeData
     }
 }
 
