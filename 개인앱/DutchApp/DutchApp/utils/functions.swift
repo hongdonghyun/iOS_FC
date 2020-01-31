@@ -37,8 +37,9 @@ func amountToString(amount: String) -> String {
 func getBarButton(_ title : String) -> UIBarButtonItem{
     let customButton =  UIButton.init(type: .custom)
     customButton.setTitle(title, for: .normal)
-    customButton.frame = CGRect.init(x: 0, y: 5, width: 140, height: 32)
+    customButton.frame = CGRect.init(x: 0, y: 5, width: 60, height: 32)
     customButton.setTitleColor(.white, for: .normal)
+    customButton.titleLabel?.dynamicFont()
     return UIBarButtonItem.init(customView: customButton)
 }
 

@@ -249,6 +249,11 @@ class ReceiptViewController: UIViewController {
         view.backgroundColor = .white
 
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        self.navigationController?.popViewController(animated: false)
+    }
 
 }
 

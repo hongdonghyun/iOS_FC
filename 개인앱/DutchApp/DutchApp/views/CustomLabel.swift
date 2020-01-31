@@ -11,7 +11,9 @@ import UIKit
 class CustomLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.font = UIFont(name: "NanumSquareRoundR", size: 15)
+//        self.dynamicFont(fontName: "NanumSquareRoundR", fontSize: 15)
+        
+        self.dynamicFont()
     }
     
     required init?(coder: NSCoder) {

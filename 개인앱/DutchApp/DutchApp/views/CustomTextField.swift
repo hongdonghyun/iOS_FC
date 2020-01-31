@@ -13,6 +13,8 @@ class CustomTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.font = UIFont(name: "NanumSquareRoundR", size: 15)
+        
+        self.dynamicFont()
     }
     
     required init?(coder: NSCoder) {

@@ -26,3 +26,74 @@ extension UIColor {
         )
     }
 }
+
+
+extension UITextField {
+    func dynamicFont() {
+        let currentFontName = self.font?.fontName
+        var calculatedFont: UIFont?
+        let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
+        var size = self.font?.pointSize ?? 15
+        switch SCREEN_HEIGHT {
+        case 480.0: //Iphone 3,4S
+            size *= 0.7
+            
+        case 568.0: //iphone 5, SE
+            size *= 0.8
+            
+        case 667.0: //iphone 6, 6s, 7, 8
+            size *= 0.9
+            
+        case 736.0: //iphone 6s+ 6+, 7+, 8+
+            size *= 0.95
+            
+            //        case 812.0: //iphone X, XS
+        //        case 896.0: //iphone XR => 6.1 inch
+        default:
+            break
+        }
+        calculatedFont = UIFont(name: currentFontName!, size: size)
+        resizeFont(calculatedFont: calculatedFont)
+    }
+    
+    private func resizeFont(calculatedFont: UIFont?) {
+        self.font = calculatedFont
+        self.font = UIFont.systemFont(ofSize: calculatedFont!.pointSize)
+    }
+}
+
+extension UILabel {
+    func dynamicFont() {
+        let currentFontName = self.font.fontName
+        var calculatedFont: UIFont?
+        let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
+        var size = self.font?.pointSize ?? 15
+        
+        switch SCREEN_HEIGHT {
+        case 480.0: //Iphone 3,4S
+            size *= 0.7
+            
+        case 568.0: //iphone 5, SE
+            size *= 0.8
+        
+        case 896.0: //iphone XR => 6.1 inch
+            size *= 1.15
+//        case 667.0: //iphone 6, 6s, 7, 8
+//
+//        case 736.0: //iphone 6s+ 6+, 7+, 8+
+            
+            //        case 812.0: //iphone X, XS
+                
+        default:
+            break
+        }
+        
+        calculatedFont = UIFont(name: currentFontName, size: size)
+        resizeFont(calculatedFont: calculatedFont)
+    }
+    
+    private func resizeFont(calculatedFont: UIFont?) {
+        self.font = calculatedFont
+        self.font = UIFont.systemFont(ofSize: calculatedFont!.pointSize)
+    }
+}

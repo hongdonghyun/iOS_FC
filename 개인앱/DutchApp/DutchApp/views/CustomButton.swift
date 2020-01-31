@@ -12,6 +12,8 @@ class CustomButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.titleLabel?.font = UIFont(name: "NanumSquareRoundR", size: 15)
+        self.titleLabel?.dynamicFont()
+        
     }
     
     required init?(coder: NSCoder) {

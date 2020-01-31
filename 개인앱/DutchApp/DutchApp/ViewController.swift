@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     private let UIMargin: CGFloat = 50
     private let Padding: CGFloat = 80
     
-    private let containerView = UIView()
+    private let containerView = UIScrollView()
     private let dateTextButton: UIButton = {
         let button = CustomButton()
         button.setTitle(dateToString(), for: .normal)
@@ -103,7 +103,6 @@ class ViewController: UIViewController {
     private let accountLabel: UILabel = {
         let label = CustomLabel()
         label.text = "계좌정보"
-        label.font = UIFont(name: "NanumSquareRoundR", size: 15)
         return label
     }()
     
@@ -130,7 +129,7 @@ class ViewController: UIViewController {
     }()
     
     private let calculateButton: UIButton = {
-        let button = UIButton()
+        let button = CustomButton()
         button.setTitle("계산", for: .normal)
         button.addTarget(self, action: #selector(calculateButtonAction), for: .touchUpInside)
         button.backgroundColor = mainColor
@@ -160,7 +159,7 @@ class ViewController: UIViewController {
         initProperty()
     }
     
-
+    
 }
 
 //MARK: - TextFieldDelegate
@@ -205,7 +204,7 @@ extension ViewController: UITextFieldDelegate {
         switch textField {
         case numberOfPersonTextField:
             if let text = textField.text, let intText = Int(text), intText >= 2 {
-                    numberOfPerson = intText
+                numberOfPerson = intText
             } else {
                 numberOfPerson = 1
                 textField.text = nil
@@ -268,41 +267,42 @@ extension ViewController {
     }
     
     @objc private func recentButtonAction(_ sender: UIButton) {
-//        guard let userArray = userDefault.array(forKey: "itemData") else { return }
-//        var userAccount = [String]()
-//        var userAccountSet = Set<String>()
-//        var userAccountDict = [ItemData]()
-//        for i in userArray {
-//            guard let item = try? decoder.decode(ItemData.self, from: i as! Data) else { return }
-//            let accountString = accountFlat(item.selectedBank!, item.accountNumber!, item.accountHolder!)
-//            userAccount.append(accountString)
-//            userAccountSet.insert(accountString)
-//            userAccountDict.append(item)
-//        }
+        //        guard let userArray = userDefault.array(forKey: "itemData") else { return }
+        //        var userAccount = [String]()
+        //        var userAccountSet = Set<String>()
+        //        var userAccountDict = [ItemData]()
+        //        for i in userArray {
+        //            guard let item = try? decoder.decode(ItemData.self, from: i as! Data) else { return }
+        //            let accountString = accountFlat(item.selectedBank!, item.accountNumber!, item.accountHolder!)
+        //            userAccount.append(accountString)
+        //            userAccountSet.insert(accountString)
+        //            userAccountDict.append(item)
+        //        }
         let asp = ActionSheetStringPicker(title: "최근사용계좌", rows: [1,2,3,4,5], initialSelection: 0, doneBlock: {
             picker, indexes, values in
-//            let bank = userAccountDict[indexes].selectedBank!
-//            let accountNumber = userAccountDict[indexes].accountNumber!
-//            let holder = userAccountDict[indexes].accountHolder!
-//            self.bankButton.setTitle(bank, for: .normal)
-//            self.bankButton.setTitleColor(.black, for: .normal)
-//            self.selectedBank = bank
-//            self.accountTextField.text = accountNumber
-//            self.accountNo = accountNumber
-//            self.accountHolderTextField.text = holder
-//            self.accountHolder = holder
+            //            let bank = userAccountDict[indexes].selectedBank!
+            //            let accountNumber = userAccountDict[indexes].accountNumber!
+            //            let holder = userAccountDict[indexes].accountHolder!
+            //            self.bankButton.setTitle(bank, for: .normal)
+            //            self.bankButton.setTitleColor(.black, for: .normal)
+            //            self.selectedBank = bank
+            //            self.accountTextField.text = accountNumber
+            //            self.accountNo = accountNumber
+            //            self.accountHolderTextField.text = holder
+            //            self.accountHolder = holder
             return
         }, cancel: { ActionMultipleStringCancelBlock in return }, origin: sender)
         
         asp?.setCancelButton(getBarButton("   취소   "))
         asp?.setDoneButton(getBarButton("   선택   "))
-        asp?.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        asp?.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
         asp?.toolbarBackgroundColor = mainColor
         asp?.show()
         
     }
     
     @objc private func bankButtonAction(_ sender: UIButton) {
+        
         let asp = ActionSheetStringPicker(title: "은행목록", rows: bankArray, initialSelection: 0, doneBlock: {
             picker, indexes, values in
             if let v = values {
@@ -313,10 +313,9 @@ extension ViewController {
             }
             return
         }, cancel: { ActionMultipleStringCancelBlock in return }, origin: sender)
-        
         asp?.setCancelButton(getBarButton("   취소   "))
         asp?.setDoneButton(getBarButton("   선택   "))
-        asp?.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        asp?.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
         asp?.toolbarBackgroundColor = mainColor
         asp?.show()
     }
@@ -403,7 +402,7 @@ extension ViewController {
         adp?.locale = Locale(identifier: "ko_kr")
         adp?.setCancelButton(getBarButton("   취소   "))
         adp?.setDoneButton(getBarButton("   선택   "))
-        adp?.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        adp?.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
         adp?.toolbarBackgroundColor = mainColor
         adp?.show()
         
@@ -431,20 +430,22 @@ extension ViewController {
 // MARK: - UI
 extension ViewController {
     private func setUpUI() {
-        view.addSubview(containerView)
+        let safeArea = view.safeAreaLayoutGuide
         containerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(containerView)
+        
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: view.topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            containerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            containerView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
         ])
         setUpContainerView()
         setUpDelegate()
     }
     
     private func setUpContainerView() {
-        let safeArea = containerView.safeAreaLayoutGuide
+        let safeArea = containerView
         let UIArray = [
             dateTextButton, itemLabel, itemTextField, amountLabel, amountTextField, personSubStepper,
             personAddStepper, numberOfPersonLabel, numberOfPersonTextField, recentlyUsedAccountButton, accountLabel,
@@ -456,51 +457,59 @@ extension ViewController {
         }
         
         NSLayoutConstraint.activate([
-            dateTextButton.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: yMargin / 2),
-            dateTextButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: xMargin),
-            dateTextButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -xMargin),
+            dateTextButton.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: yMargin),
             
-            itemLabel.topAnchor.constraint(equalTo: dateTextButton.bottomAnchor, constant: UIMargin),
+            dateTextButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: xMargin),
+            dateTextButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            dateTextButton.heightAnchor.constraint(equalToConstant: 35),
+            dateTextButton.widthAnchor.constraint(equalToConstant: self.view.frame.width - 40),
+            
+            itemLabel.topAnchor.constraint(equalTo: dateTextButton.bottomAnchor, constant: UIMargin / 2),
             itemLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: xMargin),
             itemLabel.widthAnchor.constraint(equalToConstant: Padding),
+            itemLabel.heightAnchor.constraint(equalToConstant: 40),
             
-            itemTextField.topAnchor.constraint(equalTo: dateTextButton.bottomAnchor, constant: UIMargin),
             itemTextField.leadingAnchor.constraint(equalTo: itemLabel.trailingAnchor, constant: xMargin),
-            itemTextField.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -xMargin),
+            itemTextField.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            itemTextField.centerYAnchor.constraint(equalTo: itemLabel.centerYAnchor),
             
-            amountLabel.topAnchor.constraint(equalTo: itemLabel.bottomAnchor, constant: UIMargin),
+            amountLabel.topAnchor.constraint(equalTo: itemLabel.bottomAnchor, constant: UIMargin / 2),
             amountLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: xMargin),
             amountLabel.widthAnchor.constraint(equalToConstant: Padding),
+            amountLabel.heightAnchor.constraint(equalTo: itemLabel.heightAnchor),
             
-            amountTextField.topAnchor.constraint(equalTo: itemTextField.bottomAnchor, constant: UIMargin),
+            amountTextField.centerYAnchor.constraint(equalTo: amountLabel.centerYAnchor),
             amountTextField.leadingAnchor.constraint(equalTo: amountLabel.trailingAnchor, constant: xMargin),
+            amountTextField.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             
-            numberOfPersonLabel.topAnchor.constraint(equalTo: amountLabel.bottomAnchor, constant: UIMargin),
+            numberOfPersonLabel.topAnchor.constraint(equalTo: amountLabel.bottomAnchor, constant: UIMargin / 2),
             numberOfPersonLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: xMargin),
             numberOfPersonLabel.widthAnchor.constraint(equalToConstant: Padding),
+            numberOfPersonLabel.heightAnchor.constraint(equalTo: itemLabel.heightAnchor),
             
             numberOfPersonTextField.centerYAnchor.constraint(equalTo: numberOfPersonLabel.centerYAnchor),
             numberOfPersonTextField.leadingAnchor.constraint(equalTo: numberOfPersonLabel.trailingAnchor, constant: xMargin),
             numberOfPersonTextField.trailingAnchor.constraint(equalTo: personSubStepper.leadingAnchor),
             
-            //            personSubStepper.topAnchor.constraint(equalTo: amountLabel.bottomAnchor, constant: UIMargin),
             personSubStepper.centerYAnchor.constraint(equalTo: numberOfPersonLabel.centerYAnchor),
             personSubStepper.heightAnchor.constraint(equalTo: numberOfPersonTextField.heightAnchor),
-            personSubStepper.widthAnchor.constraint(equalTo: personAddStepper.widthAnchor),
+            personSubStepper.widthAnchor.constraint(equalToConstant: 30),
             
             personAddStepper.centerYAnchor.constraint(equalTo: numberOfPersonLabel.centerYAnchor),
             personAddStepper.leadingAnchor.constraint(equalTo: personSubStepper.trailingAnchor),
-            personAddStepper.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -xMargin),
+            personAddStepper.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             personAddStepper.heightAnchor.constraint(equalTo: numberOfPersonTextField.heightAnchor),
+            personAddStepper.widthAnchor.constraint(equalTo: personSubStepper.widthAnchor),
             
-            recentlyUsedAccountButton.topAnchor.constraint(equalTo: numberOfPersonLabel.bottomAnchor, constant: UIMargin),
+            recentlyUsedAccountButton.topAnchor.constraint(equalTo: numberOfPersonLabel.bottomAnchor, constant: UIMargin / 2),
             recentlyUsedAccountButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: xMargin),
-            
+            recentlyUsedAccountButton.heightAnchor.constraint(equalToConstant: 35),
             recentlyUsedAccountButton.widthAnchor.constraint(equalToConstant: 120),
             
             accountLabel.topAnchor.constraint(equalTo: recentlyUsedAccountButton.bottomAnchor, constant: UIMargin / 2),
             accountLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: xMargin),
             accountLabel.widthAnchor.constraint(equalToConstant: Padding),
+            accountLabel.heightAnchor.constraint(equalTo: itemLabel.heightAnchor),
             
             bankButton.topAnchor.constraint(equalTo: accountLabel.bottomAnchor, constant: 20),
             bankButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: xMargin),
@@ -513,13 +522,15 @@ extension ViewController {
             
             accountHolderTextField.centerYAnchor.constraint(equalTo: bankButton.centerYAnchor),
             accountHolderTextField.leadingAnchor.constraint(equalTo: accountTextField.trailingAnchor),
-            accountHolderTextField.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -xMargin),
+//            accountHolderTextField.widthAnchor.constraint(equalToConstant: 140),
+            accountHolderTextField.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             accountHolderTextField.heightAnchor.constraint(equalTo: bankButton.heightAnchor),
             
+            calculateButton.topAnchor.constraint(equalTo: bankButton.bottomAnchor, constant: 20),
             calculateButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-            calculateButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -yMargin),
+            calculateButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             calculateButton.widthAnchor.constraint(equalToConstant: 100),
-            calculateButton.heightAnchor.constraint(equalToConstant: 40)
+            calculateButton.heightAnchor.constraint(equalToConstant: 30)
             
         ])
     }
