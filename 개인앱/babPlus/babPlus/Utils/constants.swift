@@ -12,3 +12,4 @@ import MapKit
 let mapCenterlat = 37.544792611423425//위도
 let mapCenterlon = 127.05570731194194//경도
 let span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+let base_url = "https://1cr8sgkm6e.execute-api.ap-northeast-2.amazonaws.com/prod/"

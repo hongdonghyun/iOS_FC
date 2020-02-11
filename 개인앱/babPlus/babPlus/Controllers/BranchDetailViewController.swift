@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 
 class BranchDetailViewController: UIViewController {
+    private let APPDELEGATE = UIApplication.shared.delegate as!
+    AppDelegate
     private let backButtonItem = UINavigationItem()
     private let mapView: MKMapView = {
         let mapView = MKMapView()
@@ -17,8 +19,6 @@ class BranchDetailViewController: UIViewController {
         mapView.setRegion(region, animated: true)
         return mapView
     }()
-    
-    private let mapContainerView = UIView()
     private let menuTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.rowHeight = 45
@@ -28,7 +28,7 @@ class BranchDetailViewController: UIViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
-    
+    private let mapContainerView = UIView()
     lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.text = self.APPDELEGATE.dummy?.date
@@ -36,19 +36,15 @@ class BranchDetailViewController: UIViewController {
         label.textColor = .darkGray
         return label
     }()
-    
-    private let customHeight: CGFloat = 50
-    let APPDELEGATE = UIApplication.shared.delegate as!
-    AppDelegate
     lazy var menuArray = APPDELEGATE.dummy?.contents[receiveBranchName]
     
-    var receiveAddress = ""
-    var receiveBranchName = ""
+    public var receiveAddress = ""
+    public var receiveBranchName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = receiveBranchName
         view.backgroundColor = .white
+        navigationItem.title = receiveBranchName
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "lessthan"), style: .plain, target: self, action: #selector(didTapBackButtonItem(_:)))
         setupUI()
     }
@@ -107,18 +103,14 @@ extension BranchDetailViewController: UITableViewDelegate {
 //MARK: - TableViewDelegate
 extension BranchDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionCheck = section == 0 ? menuArray!.menus.lunch.count : menuArray!.menus.dinner.count
-        return sectionCheck
+        let sectionCount = section == 0 ? menuArray!.menus.lunch.count : menuArray!.menus.dinner.count
+        return sectionCount
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         var sectionCount = 0
-        if !menuArray!.menus.lunch.isEmpty {
-            sectionCount += 1
-        }
-        if !menuArray!.menus.dinner.isEmpty {
-            sectionCount += 1
-        }
+        if !menuArray!.menus.lunch.isEmpty { sectionCount += 1 }
+        if !menuArray!.menus.dinner.isEmpty { sectionCount += 1 }
         return sectionCount
     }
     
@@ -161,18 +153,17 @@ extension BranchDetailViewController {
 
 // MARK: - Setup UI
 extension BranchDetailViewController {
-    
     private func setupMapView() {
         let safeArea = view.safeAreaLayoutGuide
         let mapSize = self.view.frame.height * 0.3
-        [mapView].forEach {
-            mapContainerView.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-        mapView.addSubview(dateLabel)
-        view.addSubview(mapContainerView)
+        
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        mapView.translatesAutoresizingMaskIntoConstraints = false
         mapContainerView.translatesAutoresizingMaskIntoConstraints = false
+        mapView.addSubview(dateLabel)
+        mapContainerView.addSubview(mapView)
+        view.addSubview(mapContainerView)
+        
         
         NSLayoutConstraint.activate([
             mapContainerView.topAnchor.constraint(equalTo: safeArea.topAnchor),

@@ -10,19 +10,30 @@ import UIKit
 import MapKit
 
 class BranchsAddressMapViewController: UIViewController {
-    private let mapView = MKMapView()
-    private let mapCenter = CLLocationCoordinate2DMake(mapCenterlat, mapCenterlon)
-    private let locationManager = CLLocationManager()
+    private let APPDELEGATE = UIApplication.shared.delegate as!
+    AppDelegate
+    private lazy var mapView: MKMapView = {
+        let mapView = MKMapView()
+        let coordinate = CLLocationCoordinate2DMake(37.5469894, 127.0513373)
+        let span = MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        mapView.setRegion(region, animated: true)
+        return mapView
+    }()
+    private lazy var locationManager: CLLocationManager = {
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        return locationManager
+    }()
     private var contents: BabMenu?
     private var pinNameList = [String]()
     private var pinAddressList = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestData()        
-        mapView.delegate = self
-        mapView.showsUserLocation = true
-        locationManager.delegate = self
+        loadData()
         checkAuthorizationStatus()
         setupUI()
     }
@@ -38,9 +49,7 @@ class BranchsAddressMapViewController: UIViewController {
             locationManager.requestWhenInUseAuthorization()
         case .restricted, .denied:
             break
-        case .authorizedWhenInUse:
-            fallthrough
-        case .authorizedAlways:
+        case .authorizedWhenInUse, .authorizedAlways:
             startUpdatingLocation()
         @unknown default:
             break
@@ -51,31 +60,14 @@ class BranchsAddressMapViewController: UIViewController {
         let status = CLLocationManager.authorizationStatus()
         guard status == .authorizedWhenInUse || status == .authorizedAlways else { return }
         guard CLLocationManager.locationServicesEnabled() else { return }
-        
-        //10 미터 이동시마다 재설정
         locationManager.startUpdatingLocation()
-        
     }
     
     // MARK: API에서 받아온 데이터들
-    private func requestData() {
-        let APPDELEGATE = UIApplication.shared.delegate as!
-        AppDelegate
-        contents = APPDELEGATE.dummy!.self
-        contents!.contents.keys.forEach {
-            pinNameList.append($0)
-            pinAddressList.append((contents!.contents[$0]!.address))
-        }
-        
-    }
-    
-    // MARK: 지도 시작지점
-    private func setRegion() {
-        let coordinate = CLLocationCoordinate2DMake(37.5469894, 127.0513373)
-        let span = MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025)
-        let region = MKCoordinateRegion(center: coordinate, span: span)
-        
-        mapView.setRegion(region, animated: true)
+    private func loadData() {
+        contents = APPDELEGATE.dummy
+        pinNameList = Array(contents!.contents.keys)
+        pinAddressList = pinNameList.map { contents!.contents[$0]!.address }
     }
     
     // MARK:
@@ -84,13 +76,12 @@ class BranchsAddressMapViewController: UIViewController {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            mapView.topAnchor.constraint(equalTo: view.topAnchor),
+            mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
-        setRegion()
+    
         pinNameList.forEach {
             geocodeAddressString(address: contents!.contents[$0]!.address, title: $0)
         }

@@ -9,19 +9,30 @@
 import UIKit
 
 class LaunchViewController: UIViewController {
-    let APPDELEGATE = UIApplication.shared.delegate as!
+    private let APPDELEGATE = UIApplication.shared.delegate as!
     AppDelegate
-    
-    private let logoImage = UIImageView()
-    private let forkImage = UIImageView()
-    private let spoonImage = UIImageView()
+    private let logoImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "logo")
+        return imageView
+    }()
+    private let forkImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "fork")
+        return imageView
+    }()
+    private let spoonImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "SPOON")
+        return imageView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        self.spoonImage.contentMode = .scaleAspectFit
-        self.forkImage.contentMode = .scaleAspectFit
-        attribute()
         setupUI()
         
     }
@@ -29,15 +40,14 @@ class LaunchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         let mainVC = MainViewController()
-        let mainMapVC = BranchsAddressMapViewController()
+        let mapVC = BranchsAddressMapViewController()
         let mainNaviController = UINavigationController(rootViewController: mainVC)
-        let mapNaviController = UINavigationController(rootViewController: mainMapVC)
+        let mapNaviController = UINavigationController(rootViewController: mapVC)
         mainNaviController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
         mapNaviController.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map.fill"), tag: 1)
         
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [mainNaviController, mapNaviController]
-        
         
         RequestHelper().reqTask(path: "menu", method: "GET") {
             (result) in
@@ -76,7 +86,6 @@ class LaunchViewController: UIViewController {
         
     }
     
-    
     private func setupUI() {
         let logoSize:CGFloat = view.frame.width / 2
         let margin:CGFloat = 50
@@ -84,6 +93,7 @@ class LaunchViewController: UIViewController {
         
         [logoImage, forkImage, spoonImage].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview($0)
         }
         
         NSLayoutConstraint.activate([
@@ -102,16 +112,5 @@ class LaunchViewController: UIViewController {
             
         ])
     }
-    
-    private func attribute() {
-        logoImage.image = UIImage(named: "logo")
-        forkImage.image = UIImage(named: "fork")
-        spoonImage.image = UIImage(named: "SPOON")
-        
-        view.addSubview(logoImage)
-        view.addSubview(forkImage)
-        view.addSubview(spoonImage)
-    }
-    
     
 }
