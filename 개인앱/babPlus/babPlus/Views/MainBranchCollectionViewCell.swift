@@ -67,14 +67,28 @@ class MainBranchCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func configure(branchImageURL imageURL: String, branchName name: String) {
-        if !imageURL.isEmpty, let url = URL(string: imageURL), let data = try? Data(contentsOf: url) {
-            branchImage.image = UIImage(data: data)
-        } else {
-            branchImage.image = (UIImage(named: "logo"))
+    func configure(branchName name: String) {
+        if let i = Constants.APPDELEGATE.storeImage.first(where: {
+            $0.name == name
+        }) {
+            branchImage.image = i.image
         }
         
         branchName.text = name
     }
+    
+//    func configure(branchImageURL imageURL: String, branchName name: String) {
+//        branchImage.image = (UIImage(named: "logo"))
+//        guard let url = URL(string: imageURL) else { return }
+//        let data = try! Data(contentsOf: url)
+////        let image = UIImage(data: data)
+////        if !imageURL.isEmpty, let url = URL(string: imageURL), let data = try? Data(contentsOf: url) {
+////            branchImage.image = UIImage(data: data)
+////        } else {
+////            branchImage.image = (UIImage(named: "logo"))
+////        }
+//
+//        branchName.text = name
+//    }
     
 }

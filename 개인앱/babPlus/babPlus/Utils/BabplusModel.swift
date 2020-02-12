@@ -6,7 +6,7 @@
 //  Copyright © 2020 YoujinMac. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - BabMenu
 struct BabMenu: Decodable {        
@@ -14,14 +14,20 @@ struct BabMenu: Decodable {
     let contents: [Content]
 }
 
-struct Content: Codable {
+struct Content: Decodable {
     let name, lat, lon, tag: String
     let image: String?
     let address: String
     let menus: Menus
+    
 }
 
 // MARK: - Menu
 struct Menus: Codable {
     let lunch, dinner: [String]
+}
+
+struct ContentImage {
+    let name: String
+    let image: UIImage?
 }

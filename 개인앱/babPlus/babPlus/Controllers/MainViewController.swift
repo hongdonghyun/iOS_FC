@@ -95,8 +95,8 @@ extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainBranchCollectionViewCell.identifier, for: indexPath) as! MainBranchCollectionViewCell
-
-        cell.configure(branchImageURL: branchImagesURL[indexPath.item], branchName: branchList[indexPath.item])
+        cell.configure(branchName: self.branchList[indexPath.item])
+        
         return cell
     }
     

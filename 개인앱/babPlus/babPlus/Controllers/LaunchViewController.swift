@@ -51,6 +51,17 @@ class LaunchViewController: UIViewController {
         RequestHelper().reqTask(path: "menu", method: "GET") {
             (result) in
             APPDELEGATE.dummy = result
+            APPDELEGATE.storeImage = result.contents.map {
+                let image: UIImage?
+                if let url = URL(string: $0.image ?? ""), let data = try? Data(contentsOf: url) {
+                    image = UIImage(data: data)
+                    
+                } else {
+                    image = UIImage(named: "logo")
+                }
+                return ContentImage(name: $0.name, image: image)
+            }
+            
             DispatchQueue.main.async {
                 let tempWindow = UIWindow(frame: UIScreen.main.bounds)
                 tempWindow.rootViewController = tabBarController

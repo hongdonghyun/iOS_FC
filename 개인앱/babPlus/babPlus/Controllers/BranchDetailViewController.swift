@@ -59,11 +59,15 @@ class BranchDetailViewController: UIViewController {
         setupPin()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("asdf")
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         receiveBranchName = ""
         receiveAddress = ""
-        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -149,8 +153,7 @@ extension BranchDetailViewController {
             
             self.mapView.addAnnotation(pinPoint)
             
-            let region = MKCoordinateRegion(center: CLLocationCoordinate2DMake(latitude, longitude),
-                                            span: Constants.span)
+            let region = MKCoordinateRegion(center: CLLocationCoordinate2DMake(latitude, longitude), span: Constants.span)
             self.mapView.setRegion(region, animated: true)
         }
     }
